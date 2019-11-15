@@ -23,6 +23,11 @@ public class BulletSpawner : MonoBehaviour
         bullets.Add(bullet.gameObject);
     }
 
+    public void RemoveBullet(GameObject bullet)
+    {
+        bullets.Remove(bullet);
+    }
+
     public void DestroyAllBullets()
     {
         foreach (var bullet in bullets)

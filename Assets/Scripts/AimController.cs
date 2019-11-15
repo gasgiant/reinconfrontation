@@ -29,6 +29,7 @@ public class AimController : MonoBehaviour
             Vector3 impulse = -dir * 40;
             playerController.ApplyImpulse(impulse);
             CommandManager.Instance.RememberCommand(impulse, transform.position, transform.rotation);
+            BulletSpawner.Instance.SpawnBullet(transform.position, dir, 0);
         }
     }
 }

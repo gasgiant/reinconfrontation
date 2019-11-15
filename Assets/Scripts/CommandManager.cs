@@ -10,6 +10,9 @@ public class CommandManager : MonoBehaviour
     private PlayerController executor;
 
     private List<Command> commands = new List<Command>();
+    private float recordStartTime;
+    private float time { get { return Time.time - recordStartTime; } }
+    private bool executing;
 
     private void Awake()
     {
@@ -20,7 +23,14 @@ public class CommandManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ExecuteCommands();
+            if (commands.Count > 0)
+            {
+                ExecuteCommands();
+            }
+            else
+            {
+                recordStartTime = Time.time;
+            }
         }
     }
 
@@ -31,11 +41,13 @@ public class CommandManager : MonoBehaviour
 
     public void RememberCommand(Vector3 impulse, Vector3 position, Quaternion rotation)
     {
-        commands.Add(new Command(Time.time, impulse, position, rotation));
+        if (!executing)
+            commands.Add(new Command(time, impulse, position, rotation));
     }
 
     IEnumerator Execution()
     {
+        executing = true;
         float startTime = Time.time;
         float previousTime = 0;
         foreach (var command in commands)
@@ -49,10 +61,13 @@ public class CommandManager : MonoBehaviour
                 yield return null;
             }
             previousTime = command.time;
-            executor.ApplyImpulse(command.impulse);
-            executor.transform.position = command.position;
+            executor.ApplyImpulse(-command.impulse);
+            BulletSpawner.Instance.SpawnBullet(-command.position,
+                command.impulse.normalized, 0);//Time.time - startTime - command.time);
+            executor.transform.position = -command.position;
             executor.transform.rotation = command.rotation;
         }
+        executing = false;
     }
 
 }
