@@ -27,6 +27,12 @@ public class CommandManager : MonoBehaviour
         allRuns.Add(new List<Command>());
     }
 
+    public void ResetRuns()
+    {
+        allRuns.Clear();
+        allRuns.Add(new List<Command>());
+    }
+
     public void RemoveEnemy(PlayerController enemy)
     {
         enemies.Remove(enemy);
