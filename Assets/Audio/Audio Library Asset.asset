@@ -12,5 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9068703d9201d9c49a5224a0f4ced2db, type: 3}
   m_Name: Audio Library Asset
   m_EditorClassIdentifier: 
-  soundGroups: []
+  soundGroups:
+  - groupID: Shoot
+    volume: 1
+    deadTime: 0
+    sounds:
+    - {fileID: 8300000, guid: ac60368523b793844ae1db02f5db3433, type: 3}
+    - {fileID: 8300000, guid: 4f04063ef2452cb4a879566cbbc68375, type: 3}
+    - {fileID: 8300000, guid: 241acac3abafcd840b2c28e6aade74e4, type: 3}
+    - {fileID: 8300000, guid: 740d1942906719c4eb094fd2286ab6cf, type: 3}
+    randomize: 0
+    pitchRndValue: 0
+    volumeRndValue: 0
+    interruptible: 0
+    maxSoursesCount: 0
+    loop: 0
+    fadeOutTime: 0
+    loopMode: 0
+    maxLoopCount: 0
+    fadeStartTime: 0
+    fadeDuration: 0
   editMode: 0

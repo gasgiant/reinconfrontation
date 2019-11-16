@@ -6,6 +6,8 @@ public class CommandManager : MonoBehaviour
 {
     public static CommandManager Instance;
     [SerializeField]
+    private GameObject spawnSquare;
+    [SerializeField]
     private PlayerController executorPrefab;
     private List<PlayerController> enemies = new List<PlayerController>();
     private List<List<Command>> allRuns = new List<List<Command>>();
@@ -37,6 +39,7 @@ public class CommandManager : MonoBehaviour
     {
         if (!recording)
         {
+            spawnSquare.SetActive(false);
             recording = true;
             recordStartTime = Time.time;
             ExecuteCommands();
@@ -77,6 +80,7 @@ public class CommandManager : MonoBehaviour
 
     public void TerminateExecution()
     {
+        spawnSquare.SetActive(true);
         foreach (var routine in executionRotines)
         {
             if (routine != null)

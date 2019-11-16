@@ -55,9 +55,10 @@ public class GameManager : MonoBehaviour
     {
         EnableControl = false;
         BulletSpawner.Instance.DestroyAllBullets();
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.5f);
-        Time.timeScale = 1;
+        //Time.timeScale = 0;
+        //yield return new WaitForSecondsRealtime(0.5f);
+        yield return null;
+        //Time.timeScale = 1;
         ResetGame();
     }
 

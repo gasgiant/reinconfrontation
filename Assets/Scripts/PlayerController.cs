@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         }
         if (!isEnemy && collision.CompareTag("EnemyBullet"))
         {
-            CameraController.RandomShake(0.8f, 0.05f, 3, 5f, 1);
+            CameraController.RandomShake(0.8f, 0.05f, 3, 5f, 0);
             GameManager.Instance.FinishRound(false);
             mainVisuals.SetActive(false);
             Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);

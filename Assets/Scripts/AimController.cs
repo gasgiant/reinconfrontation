@@ -75,6 +75,7 @@ public class AimController : MonoBehaviour
     private void Shoot(Vector3 dir)
     {
         //shotsCountText.text = "" + (GameManager.Instance.RoundNumber - shotsCount + 1);
+        AudioManager.Instance.PlaySound("Shoot");
         Vector3 impulse = -dir * 40;
         playerController.ApplyImpulse(impulse);
         CommandManager.Instance.RememberCommand(impulse, transform.position, transform.rotation);
