@@ -5859,7 +5859,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1111421510
 MonoBehaviour:
@@ -11503,6 +11503,40 @@ MonoBehaviour:
   EnableControl: 0
   my_audio_manager: {fileID: 1923622270}
   RoundNumber: 0
+  lensDistortionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0787674
+      outSlope: 1.0787674
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.13075697
+    - serializedVersion: 3
+      time: 0.31224135
+      value: 0.9964575
+      inSlope: 0.15589264
+      outSlope: 0.15589264
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32383427
+    - serializedVersion: 3
+      time: 0.9970093
+      value: -0.0046958923
+      inSlope: -0.3512394
+      outSlope: -0.3512394
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11740978
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  postProcessVolume: {fileID: 519420030}
   announcer: {fileID: 698534207}
   restartTip: {fileID: 188235949}
 --- !u!4 &2101631564
@@ -11517,5 +11551,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

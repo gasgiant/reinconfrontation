@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class GameManager : MonoBehaviour
 
     public int RoundNumber;
 
+    [SerializeField]
+    private AnimationCurve lensDistortionCurve;
+
+    [SerializeField]
+    private PostProcessVolume postProcessVolume;
     [SerializeField]
     private RoundAnnouncer announcer;
     [SerializeField]
@@ -32,8 +38,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        LensDistortion lensDistortion = null;
+        postProcessVolume.profile.TryGetSettings(out lensDistortion);
+        lensDistortion.intensity.value = 0f;
         Play();
     }
+
 
     private void Play()
     {
@@ -64,7 +74,7 @@ public class GameManager : MonoBehaviour
             //Invert *= -1;
             RoundNumber++;
             my_audio_manager.GetComponent<MyAudioManager>().PlayMusicOnLevel(RoundNumber);
-            announcer.NewLevel(RoundNumber);
+            
             failsCounter = 0;
             restartTip.SetActive(false);
         }
@@ -75,19 +85,40 @@ public class GameManager : MonoBehaviour
                 restartTip.SetActive(true);
             CommandManager.Instance.ClearCurrentRun();
         }
-        StartCoroutine(FinishRoutine());
+        StartCoroutine(FinishRoutine(win));
         
     }
 
-    IEnumerator FinishRoutine()
+    IEnumerator FinishRoutine(bool win)
     {
         EnableControl = false;
         BulletSpawner.Instance.DestroyAllBullets();
-        //Time.timeScale = 0;
-        //yield return new WaitForSecondsRealtime(0.5f);
+
         yield return null;
-        //Time.timeScale = 1;
         ResetGame();
+        if (win)
+        {
+            LensDistortion lensDistortion = null;
+            postProcessVolume.profile.TryGetSettings(out lensDistortion);
+            lensDistortion.intensity.value = 0f;
+
+            float t = 0;
+            while (t < 1)
+            {
+                t += Time.unscaledDeltaTime * 1.2f;
+                lensDistortion.intensity.value = lensDistortionCurve.Evaluate(t) * 100;
+                lensDistortion.scale.value = Mathf.Lerp(1, 0.5f, lensDistortionCurve.Evaluate(t));
+                yield return null;
+            }
+            lensDistortion.intensity.value = 0f;
+            lensDistortion.scale.value = 1;
+            announcer.NewLevel(RoundNumber);
+        }
+        //
+        //yield return new WaitForSecondsRealtime(0.5f);
+        
+        //Time.timeScale = 1;
+        
     }
 
     private void ResetGame()
