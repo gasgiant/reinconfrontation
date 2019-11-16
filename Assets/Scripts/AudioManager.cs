@@ -132,7 +132,7 @@ public class AudioManager : MonoBehaviour {
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         library = FindObjectOfType<SoundLibrary>();
         if (library == null) Debug.LogError("Sound library not found!");

@@ -74,5 +74,9 @@ public class PlayerController : MonoBehaviour
         mainVisuals.SetActive(false);
         Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
         CommandManager.Instance.RemoveEnemy(this);
+
+
+
+        
     }
 }

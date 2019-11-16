@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
+    private GameObject hitEffect;
+    [SerializeField]
     private GameObject triggerObject;
     [SerializeField]
     private Color playerColor;
     [SerializeField]
+    private Gradient playerTailColor;
+    [SerializeField]
     private Color enemyColor;
+    [SerializeField]
+    private Gradient enemyTailColor;
     [SerializeField]
     private TrailRenderer trail;
     [SerializeField]
@@ -27,18 +33,24 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        Vector3 dir = rb.velocity.normalized;
+        transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, Vector3.forward);
+    }
+
     public void Initialize(Vector2 direction, bool isEnemy)
     {
         rb.velocity = direction * Speed;
         Invoke("EnableDamageTrigger", 0.1f);
         if (isEnemy)
         {
-            SetColor(enemyColor);
+            SetColor(enemyColor, enemyTailColor);
             triggerObject.tag = "EnemyBullet";
         }
         else
         {
-            SetColor(playerColor);
+            SetColor(playerColor, playerTailColor);
             triggerObject.tag = "Bullet";
         }
     }
@@ -52,21 +64,19 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
-            
             hits++;
             if (hits > 1)
             {
                 BulletSpawner.Instance.RemoveBullet(gameObject);
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-            
         }
     }
 
-    private void SetColor(Color color)
+    private void SetColor(Color color, Gradient tailColor)
     {
-        trail.startColor = color;
-        trail.endColor = new Color(color.r, color.g, color.b, 0.5f);
         sprite.color = color;
+        trail.colorGradient = tailColor;
     }
 }
