@@ -88,7 +88,7 @@ public class CommandManager : MonoBehaviour
             previousTime = command.time;
             executor.ApplyImpulse(command.impulse);
             BulletSpawner.Instance.SpawnBullet(command.position,
-                -command.impulse.normalized, 0);//Time.time - startTime - command.time);
+                -command.impulse.normalized, 0, true);//Time.time - startTime - command.time);
             executor.transform.position = command.position;
             executor.transform.rotation = command.rotation;
         }

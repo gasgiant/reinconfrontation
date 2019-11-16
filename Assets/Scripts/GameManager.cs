@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
         EnableControl = true;
     }
 
+    private void Start()
+    {
+        ResetEvent.Invoke();
+    }
+
     public void FinishRound(bool win)
     {
         CommandManager.Instance.TerminateExecution();

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,7 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject mainVisuals;
     [SerializeField]
-    private GameObject deathParticles;
+    private GameObject deathParticlesPrefab;
+    [SerializeField]
+    private GameObject onHitParticlesPrefab;
+    [SerializeField]
+    private TextMeshPro livesText;
     [SerializeField]
     private bool isEnemy;
 
@@ -15,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+
+    private int hits;
 
     private void OnEnable()
     {
@@ -42,11 +49,29 @@ public class PlayerController : MonoBehaviour
         transform.rotation = initialRotation;
         rb.velocity = Vector2.zero;
         mainVisuals.SetActive(true);
+        hits = 0;
+        if (isEnemy)
+            livesText.text = (GameManager.Instance.RoundNumber + 1 - hits).ToString();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet"))
+        if (isEnemy && collision.CompareTag("Bullet"))
         {
+            hits++;
+            if (hits > GameManager.Instance.RoundNumber)
+            {
+                GameManager.Instance.FinishRound(isEnemy);
+                livesText.text = "0";
+            }
+            else
+            {
+                Instantiate(onHitParticlesPrefab, transform.position, Quaternion.identity);
+                livesText.text = (GameManager.Instance.RoundNumber + 1 - hits).ToString();
+            }
+        }
+        if (!isEnemy && collision.CompareTag("EnemyBullet"))
+        {
+
             GameManager.Instance.FinishRound(isEnemy);
         }
     }
@@ -56,7 +81,7 @@ public class PlayerController : MonoBehaviour
         if (win == isEnemy)
         {
             mainVisuals.SetActive(false);
-            deathParticles.SetActive(true);
+            Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
         }
     }
 }

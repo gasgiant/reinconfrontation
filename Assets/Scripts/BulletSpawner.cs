@@ -16,10 +16,10 @@ public class BulletSpawner : MonoBehaviour
         Instance = this;
     }
 
-    public void SpawnBullet(Vector3 position, Vector3 direction, float deltaTime)
+    public void SpawnBullet(Vector3 position, Vector3 direction, float deltaTime, bool isEnemy)
     {
         Bullet bullet = Instantiate(bulletPrefab, position + direction * Bullet.Speed * deltaTime, Quaternion.identity);
-        bullet.Initialize(direction);
+        bullet.Initialize(direction, isEnemy);
         bullets.Add(bullet.gameObject);
     }
 

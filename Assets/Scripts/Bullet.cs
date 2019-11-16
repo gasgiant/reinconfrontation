@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
+    private GameObject triggerObject;
+    [SerializeField]
+    private Color playerColor;
+    [SerializeField]
+    private Color enemyColor;
+    [SerializeField]
+    private TrailRenderer trail;
+    [SerializeField]
+    private SpriteRenderer sprite;
+    [SerializeField]
     private GameObject damageTrigger;
 
     public static float Speed = 20;
@@ -17,10 +27,20 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(Vector2 direction)
+    public void Initialize(Vector2 direction, bool isEnemy)
     {
         rb.velocity = direction * Speed;
         Invoke("EnableDamageTrigger", 0.1f);
+        if (isEnemy)
+        {
+            SetColor(enemyColor);
+            triggerObject.tag = "EnemyBullet";
+        }
+        else
+        {
+            SetColor(playerColor);
+            triggerObject.tag = "Bullet";
+        }
     }
 
     private void EnableDamageTrigger()
@@ -41,5 +61,12 @@ public class Bullet : MonoBehaviour
             }
             */
         }
+    }
+
+    private void SetColor(Color color)
+    {
+        trail.startColor = color;
+        trail.endColor = color;
+        sprite.color = color;
     }
 }
