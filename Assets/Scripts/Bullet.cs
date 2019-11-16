@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private GameObject damageTrigger;
 
-    public static float Speed = 20;
+    public static float Speed = 10;
     private Rigidbody2D rb;
     private int hits = 0;
 
@@ -52,21 +52,21 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
-            /*
+            
             hits++;
             if (hits > 1)
             {
                 BulletSpawner.Instance.RemoveBullet(gameObject);
                 Destroy(gameObject);
             }
-            */
+            
         }
     }
 
     private void SetColor(Color color)
     {
         trail.startColor = color;
-        trail.endColor = color;
+        trail.endColor = new Color(color.r, color.g, color.b, 0.5f);
         sprite.color = color;
     }
 }

@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerObject: {fileID: 3564605182695866726}
-  playerColor: {r: 0.63529414, g: 0, b: 1, a: 1}
-  enemyColor: {r: 1, g: 0.6117647, b: 0, a: 1}
+  playerColor: {r: 0.9529412, g: 0.5058824, b: 0, a: 1}
+  enemyColor: {r: 0.69803923, g: 0, b: 0.7176471, a: 1}
   trail: {fileID: 4406130479271045180}
   sprite: {fileID: 2062589410710011106}
   damageTrigger: {fileID: 3564605182695866726}
@@ -319,7 +319,7 @@ TrailRenderer:
   m_SortingLayerID: 1985498577
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.7
@@ -336,13 +336,13 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 0.9942322
         value: 0
-        inSlope: -0.070669934
-        outSlope: -0.070669934
+        inSlope: -0.38984483
+        outSlope: -0.38984483
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.09248555
+        inWeight: 0.08431386
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

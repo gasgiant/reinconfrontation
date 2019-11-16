@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private GameObject deathParticlesPrefab;
     [SerializeField]
     private GameObject onHitParticlesPrefab;
-    [SerializeField]
-    private TextMeshPro livesText;
+    //[SerializeField]
+    //private TextMeshPro livesText;
     [SerializeField]
     private bool isEnemy;
 
@@ -29,13 +29,11 @@ public class PlayerController : MonoBehaviour
         initialPosition = transform.position;
         initialRotation = transform.rotation;
         GameManager.ResetEvent.AddListener(Reset);
-        GameManager.DieEvent.AddListener(Die);
     }
 
     private void OnDisable()
     {
         GameManager.ResetEvent.RemoveListener(Reset);
-        GameManager.DieEvent.RemoveListener(Die);
     }
 
     public void ApplyImpulse(Vector3 impulse)
@@ -51,37 +49,30 @@ public class PlayerController : MonoBehaviour
         mainVisuals.SetActive(true);
         hits = 0;
         if (isEnemy)
-            livesText.text = (GameManager.Instance.RoundNumber + 1 - hits).ToString();
+            Destroy(gameObject);
+        //if (isEnemy)
+        //    livesText.text = (GameManager.Instance.RoundNumber + 1 - hits).ToString();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isEnemy && collision.CompareTag("Bullet"))
         {
-            hits++;
-            if (hits > GameManager.Instance.RoundNumber)
-            {
-                GameManager.Instance.FinishRound(isEnemy);
-                livesText.text = "0";
-            }
-            else
-            {
-                Instantiate(onHitParticlesPrefab, transform.position, Quaternion.identity);
-                livesText.text = (GameManager.Instance.RoundNumber + 1 - hits).ToString();
-            }
+            Die();
+            CameraController.RandomShake(0.5f, 0.06f, 2, 0.2f, 1);
         }
         if (!isEnemy && collision.CompareTag("EnemyBullet"))
         {
-
-            GameManager.Instance.FinishRound(isEnemy);
-        }
-    }
-
-    private void Die(bool win)
-    {
-        if (win == isEnemy)
-        {
+            CameraController.RandomShake(0.8f, 0.05f, 3, 5f, 1);
+            GameManager.Instance.FinishRound(false);
             mainVisuals.SetActive(false);
             Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
         }
+    }
+
+    private void Die()
+    {
+        mainVisuals.SetActive(false);
+        Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+        CommandManager.Instance.RemoveEnemy(this);
     }
 }

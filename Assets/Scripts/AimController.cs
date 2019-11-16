@@ -79,6 +79,7 @@ public class AimController : MonoBehaviour
         playerController.ApplyImpulse(impulse);
         CommandManager.Instance.RememberCommand(impulse, transform.position, transform.rotation);
         BulletSpawner.Instance.SpawnBullet(transform.position, dir, 0, false);
+        CameraController.RandomShake(0.5f, 0.06f, 2, 0.2f, 1);
     }
 
     private void Lose()
