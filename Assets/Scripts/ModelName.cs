@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 
@@ -10,6 +8,7 @@ public class ModelName : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject player;
     public float time = 1.0f;
+    public float waitTime = 0.5f;
     private Camera cam;
     private Animator anim;
     void Start()
@@ -19,7 +18,7 @@ public class ModelName : MonoBehaviour
         StartCoroutine(Disappear());
     }
 
-    public void ChangeName(string name)
+    public void SetName(string name)
     {
         text.text = name;
     }
@@ -29,9 +28,10 @@ public class ModelName : MonoBehaviour
     }
     private IEnumerator Disappear()
     {
+        yield return new WaitForSeconds(waitTime);
+        anim.SetTrigger("appearTrigger");
         yield return new WaitForSeconds(time);
         anim.SetTrigger("disappearTrigger");
-        Destroy(gameObject, 2); // this is for 2 second delay
     }
 
 }
