@@ -13,9 +13,8 @@ public class RoundAnnouncer : MonoBehaviour
     void Start()
     {
         big_anim = level_obj.GetComponent<Animator>();
-        newLevel(1, true);
     }
-    public void newLevel(int level, bool toAnnounce)
+    public void NewLevel(int level)
     {
         big_text.text = "generation_" + String.Format("{0:00}", level);
         StartCoroutine(AnnounceLevel());

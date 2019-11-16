@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject my_audio_manager;
 
     public int RoundNumber;
+
+    [SerializeField]
+    private RoundAnnouncer announcer;
     
 
     private void Awake()
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ResetEvent.Invoke();
+        announcer.NewLevel(0);
     }
 
     public void FinishRound(bool win)
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
             //Invert *= -1;
             RoundNumber++;
             my_audio_manager.GetComponent<MyAudioManager>().playMusicOnLevel(RoundNumber);
+            announcer.NewLevel(RoundNumber);
         }
         else
         {
