@@ -24,7 +24,7 @@ public class AimController : MonoBehaviour
         Vector3 dir = (targetPos - transform.position).normalized;
         transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, Vector3.forward);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (GameManager.Instance.EnableControl && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Vector3 impulse = -dir * 40;
             playerController.ApplyImpulse(impulse);

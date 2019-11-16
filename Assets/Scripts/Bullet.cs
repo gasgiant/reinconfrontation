@@ -33,19 +33,11 @@ public class Bullet : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             hits++;
-            if (hits > 2)
+            if (hits > 0)
             {
                 BulletSpawner.Instance.RemoveBullet(gameObject);
                 Destroy(gameObject);
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            //SceneManager.LoadScene(0);
         }
     }
 }
