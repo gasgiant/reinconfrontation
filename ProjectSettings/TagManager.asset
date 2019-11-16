@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Bullet
+  - Other
   layers:
   - Default
   - TransparentFX
@@ -40,9 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Back
+  - name: Background
     uniqueID: 294902299
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 1985498577
     locked: 0

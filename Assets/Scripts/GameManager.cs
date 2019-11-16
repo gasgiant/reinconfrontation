@@ -6,8 +6,13 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public static int Invert = 1;
     public static UnityEvent ResetEvent = new UnityEvent();
+    public static BoolEvent DieEvent = new BoolEvent();
     public bool EnableControl;
+
+    public int RoundNumber;
+    
 
     private void Awake()
     {
@@ -19,15 +24,24 @@ public class GameManager : MonoBehaviour
     {
         CommandManager.Instance.TerminateExecution();
         if (win)
+        {
             CommandManager.Instance.SaveRun();
+            Invert *= -1;
+            RoundNumber++;
+        }
         else
+        {
             CommandManager.Instance.ClearCurrentRun();
+        }
+        if (DieEvent != null)
+            DieEvent.Invoke(win);
         StartCoroutine(FinishRoutine());
         
     }
 
     IEnumerator FinishRoutine()
     {
+        
         EnableControl = false;
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.5f);
@@ -41,5 +55,9 @@ public class GameManager : MonoBehaviour
         if (ResetEvent != null)
             ResetEvent.Invoke();
         EnableControl = true;
+    }
+
+    public class BoolEvent : UnityEvent<bool>
+    {
     }
 }

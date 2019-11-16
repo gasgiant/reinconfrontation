@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     public void Initialize(Vector2 direction)
     {
         rb.velocity = direction * Speed;
-        Invoke("EnableDamageTrigger", 0.2f);
+        Invoke("EnableDamageTrigger", 0.1f);
     }
 
     private void EnableDamageTrigger()
@@ -32,12 +32,14 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
+            /*
             hits++;
-            if (hits > 0)
+            if (hits > 1)
             {
                 BulletSpawner.Instance.RemoveBullet(gameObject);
                 Destroy(gameObject);
             }
+            */
         }
     }
 }

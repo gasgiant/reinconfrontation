@@ -63,33 +63,34 @@ public class CommandManager : MonoBehaviour
 
     IEnumerator Execution(List<Command> commands)
     {
+        /*
         bool firstRun = true;
         while (true)
         {
-            float startTime = Time.time;
-            float previousTime = 0;
-            foreach (var command in commands)
-            {
-                float t = 0;
-                Quaternion startRotation = executor.transform.rotation;
-                while (Time.time < startTime + command.time)
-                {
-                    t += Time.deltaTime / (command.time - previousTime) * 3;
-                    executor.transform.rotation = Quaternion.Lerp(startRotation, command.rotation, t);
-                    yield return null;
-                }
-                previousTime = command.time;
-                executor.ApplyImpulse(-command.impulse);
-                BulletSpawner.Instance.SpawnBullet(-command.position,
-                    command.impulse.normalized, 0);//Time.time - startTime - command.time);
-                if (firstRun)
-                {
-                    executor.transform.position = -command.position;
-                    executor.transform.rotation = command.rotation;
-                }
-            }
+            
             yield return new WaitForSeconds(2);
             firstRun = false;
+        }
+        */
+
+        float startTime = Time.time;
+        float previousTime = 0;
+        foreach (var command in commands)
+        {
+            float t = 0;
+            Quaternion startRotation = executor.transform.rotation;
+            while (Time.time < startTime + command.time)
+            {
+                t += Time.deltaTime / (command.time - previousTime) * 3;
+                executor.transform.rotation = Quaternion.Lerp(startRotation, command.rotation, t);
+                yield return null;
+            }
+            previousTime = command.time;
+            executor.ApplyImpulse(command.impulse);
+            BulletSpawner.Instance.SpawnBullet(command.position,
+                -command.impulse.normalized, 0);//Time.time - startTime - command.time);
+            executor.transform.position = command.position;
+            executor.transform.rotation = command.rotation;
         }
     }
 
