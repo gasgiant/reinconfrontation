@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static int Invert = 1;
     public static UnityEvent ResetEvent = new UnityEvent();
     public bool EnableControl;
+    public GameObject my_audio_manager;
 
     public int RoundNumber;
     
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         EnableControl = true;
+        my_audio_manager.GetComponent<MyAudioManager>().playMusicOnLevel(0);
     }
 
     private void Start()
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
             CommandManager.Instance.SaveRun();
             //Invert *= -1;
             RoundNumber++;
+            my_audio_manager.GetComponent<MyAudioManager>().playMusicOnLevel(RoundNumber);
         }
         else
         {
