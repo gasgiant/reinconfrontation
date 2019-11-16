@@ -261,7 +261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0000038146973, y: -17.9}
+  m_AnchoredPosition: {x: -0.0000038146973, y: -17.900024}
   m_SizeDelta: {x: 597.45, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188235951
@@ -282,9 +282,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hold SPACE to fallback to generation 0
+  m_text: hold SPACE to fallback to generation_00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3c56f9bd346b4c549a411afc46ad8418, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4c401ca66e6ea0f4baf9e1c9eb1d303e, type: 2}
   m_sharedMaterial: {fileID: 6118045789676685932, guid: 3c56f9bd346b4c549a411afc46ad8418,
     type: 2}
   m_fontSharedMaterials: []
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -311,8 +311,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 23.3
-  m_fontSizeBase: 23.3
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -440,8 +440,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: generation_00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4c401ca66e6ea0f4baf9e1c9eb1d303e, type: 2}
+  m_sharedMaterial: {fileID: -7414143488918330388, guid: 4c401ca66e6ea0f4baf9e1c9eb1d303e,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -765,7 +766,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -5738,7 +5739,27 @@ PrefabInstance:
     - target: {fileID: 6073449118999564386, guid: bb87e6662f4993f4494e0a40d0415cb0,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.08
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073449118999564386, guid: bb87e6662f4993f4494e0a40d0415cb0,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073449118999564386, guid: bb87e6662f4993f4494e0a40d0415cb0,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.21176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073449118999564386, guid: bb87e6662f4993f4494e0a40d0415cb0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 4265579628468276399, guid: bb87e6662f4993f4494e0a40d0415cb0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb87e6662f4993f4494e0a40d0415cb0, type: 3}

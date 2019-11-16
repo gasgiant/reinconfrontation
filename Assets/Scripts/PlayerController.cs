@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         {
             Die();
             CameraController.RandomShake(0.5f, 0.06f, 2, 0.2f, 1);
+            AudioManager.Instance.PlaySound("EnemyKilled");
         }
         if (!isEnemy && collision.CompareTag("EnemyBullet"))
         {

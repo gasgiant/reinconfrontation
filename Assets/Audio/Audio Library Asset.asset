@@ -17,10 +17,30 @@ MonoBehaviour:
     volume: 1
     deadTime: 0
     sounds:
-    - {fileID: 8300000, guid: ac60368523b793844ae1db02f5db3433, type: 3}
-    - {fileID: 8300000, guid: 4f04063ef2452cb4a879566cbbc68375, type: 3}
-    - {fileID: 8300000, guid: 241acac3abafcd840b2c28e6aade74e4, type: 3}
-    - {fileID: 8300000, guid: 740d1942906719c4eb094fd2286ab6cf, type: 3}
+    - {fileID: 8300000, guid: d0854ab27696cc245a8e9c6b3fd05df8, type: 3}
+    - {fileID: 8300000, guid: 986596f9856f56644b0c950c8c60091b, type: 3}
+    - {fileID: 8300000, guid: ec81a9d9cb0b8ed4f9327e93a0446067, type: 3}
+    - {fileID: 8300000, guid: bb4ede18c841f8841b099f4e4984a7c9, type: 3}
+    - {fileID: 8300000, guid: d86aac97231f8b442b768518f57efb3b, type: 3}
+    randomize: 0
+    pitchRndValue: 0
+    volumeRndValue: 0
+    interruptible: 0
+    maxSoursesCount: 0
+    loop: 0
+    fadeOutTime: 0
+    loopMode: 0
+    maxLoopCount: 0
+    fadeStartTime: 0
+    fadeDuration: 0
+  - groupID: EnemyKilled
+    volume: 0.5
+    deadTime: 0.1
+    sounds:
+    - {fileID: 8300000, guid: fdf2672fed628384f80a422ffb22b43b, type: 3}
+    - {fileID: 8300000, guid: c52a8693622f5e147aba20114c4e2273, type: 3}
+    - {fileID: 8300000, guid: 393dc3d2976c95b4a9af0e9c44bc8cee, type: 3}
+    - {fileID: 8300000, guid: bb09eebd089f9884790235d3b12d09de, type: 3}
     randomize: 0
     pitchRndValue: 0
     volumeRndValue: 0

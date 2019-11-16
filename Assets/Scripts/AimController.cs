@@ -40,9 +40,11 @@ public class AimController : MonoBehaviour
         Vector3 targetPos = cam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10);
 
         
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, targetPos);
+        
         Vector3 dir = (targetPos - transform.position).normalized;
+        //lineRenderer.SetPosition(0, transform.position + dir * 0.63f);
+        lineRenderer.SetPosition(0, transform.position + dir * 0.8f);
+        lineRenderer.SetPosition(1, targetPos);
 
         /*
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 100, wallLayer);
