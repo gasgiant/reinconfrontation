@@ -129,6 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 8690979843691572787, guid: 85ff6b2ab78de934084193a7ac76a50b,
     type: 3}
+  enemyHitEffect: {fileID: 8690979843691572787, guid: 6c66d1cccad108749ac19e41d58cc801,
+    type: 3}
   triggerObject: {fileID: 3564605182695866726}
   playerColor: {r: 0.9528302, g: 0.77153426, b: 0.19326274, a: 1}
   playerTailColor:
@@ -160,21 +162,21 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 3
-  enemyColor: {r: 0.69803923, g: 0, b: 0.7176471, a: 1}
+  enemyColor: {r: 0.7316403, g: 0.24959952, b: 0.745283, a: 1}
   enemyTailColor:
     serializedVersion: 2
-    key0: {r: 0.69803923, g: 0, b: 0.7176471, a: 1}
+    key0: {r: 0.73333335, g: 0.2509804, b: 0.74509805, a: 1}
     key1: {r: 0.46666667, g: 0.019607844, b: 0.47058824, a: 0.87058824}
     key2: {r: 0.46666667, g: 0.019607844, b: 0.47058824, a: 0}
-    key3: {r: 0.23529412, g: 0, b: 0, a: 0}
+    key3: {r: 0.46666667, g: 0.019607844, b: 0.47058824, a: 0}
     key4: {r: 0.23529412, g: 0, b: 0, a: 0}
     key5: {r: 0.23529412, g: 0, b: 0, a: 0}
     key6: {r: 0.23529412, g: 0, b: 0, a: 0}
     key7: {r: 0.23529412, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 18697
+    ctime1: 21010
     ctime2: 65535
-    ctime3: 0
+    ctime3: 65535
     ctime4: 0
     ctime5: 0
     ctime6: 0

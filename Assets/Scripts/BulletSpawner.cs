@@ -9,7 +9,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField]
     private Bullet bulletPrefab;
 
-    private List<GameObject> bullets = new List<GameObject>();
+    private List<Bullet> bullets = new List<Bullet>();
 
     private void Awake()
     {
@@ -20,10 +20,10 @@ public class BulletSpawner : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab, position + direction * Bullet.Speed * deltaTime, Quaternion.identity);
         bullet.Initialize(direction, isEnemy);
-        bullets.Add(bullet.gameObject);
+        bullets.Add(bullet);
     }
 
-    public void RemoveBullet(GameObject bullet)
+    public void RemoveBullet(Bullet bullet)
     {
         bullets.Remove(bullet);
     }
@@ -32,7 +32,7 @@ public class BulletSpawner : MonoBehaviour
     {
         foreach (var bullet in bullets)
         {
-            Destroy(bullet);
+            bullet.DestroyBullet(true);
         }
         bullets.Clear();
     }

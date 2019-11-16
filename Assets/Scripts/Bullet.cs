@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private GameObject hitEffect;
     [SerializeField]
+    private GameObject enemyHitEffect;
+    [SerializeField]
     private GameObject triggerObject;
     [SerializeField]
     private Color playerColor;
@@ -27,6 +29,7 @@ public class Bullet : MonoBehaviour
     public static float Speed = 10;
     private Rigidbody2D rb;
     private int hits = 0;
+    private bool isEnemy;
 
     private void OnEnable()
     {
@@ -39,8 +42,9 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, Vector3.forward);
     }
 
-    public void Initialize(Vector2 direction, bool isEnemy)
+    public void Initialize(Vector2 direction, bool _isEnemy)
     {
+        isEnemy = _isEnemy;
         rb.velocity = direction * Speed;
         Invoke("EnableDamageTrigger", 0.1f);
         if (isEnemy)
@@ -67,11 +71,19 @@ public class Bullet : MonoBehaviour
             hits++;
             if (hits > 1)
             {
-                BulletSpawner.Instance.RemoveBullet(gameObject);
-                Instantiate(hitEffect, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                BulletSpawner.Instance.RemoveBullet(this);
+                DestroyBullet(true);
             }
         }
+    }
+
+    public void DestroyBullet(bool showEffect)
+    {
+        if (isEnemy)
+            Instantiate(enemyHitEffect, transform.position, Quaternion.identity);
+        else
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void SetColor(Color color, Gradient tailColor)

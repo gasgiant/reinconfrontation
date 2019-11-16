@@ -46,10 +46,10 @@ public class GameManager : MonoBehaviour
     IEnumerator FinishRoutine()
     {
         EnableControl = false;
+        BulletSpawner.Instance.DestroyAllBullets();
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.5f);
         Time.timeScale = 1;
-        BulletSpawner.Instance.DestroyAllBullets();
         ResetGame();
     }
 
