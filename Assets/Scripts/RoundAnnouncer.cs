@@ -6,8 +6,6 @@ using System;
 
 public class RoundAnnouncer : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject enemy;
     public TextMeshProUGUI big_text;
     public GameObject level_obj;
     public float timeToAppear = 2f;
@@ -19,18 +17,13 @@ public class RoundAnnouncer : MonoBehaviour
     }
     public void newLevel(int level, bool toAnnounce)
     {
-        if (toAnnounce)
-        {
-            big_text.text = "generation_" + String.Format("{0:00}", level);
-            big_anim.SetTrigger("levelNameAppear");
-            StartCoroutine(AnnounceLevel());
-        }
-        player.GetComponent<ModelName>().SetName("model_" + String.Format("{0:00}", level));
-        enemy.GetComponent<ModelName>().SetName("model_" + String.Format("{0:00}", level - 1));
+        big_text.text = "generation_" + String.Format("{0:00}", level);
+        StartCoroutine(AnnounceLevel());
     }
 
     private IEnumerator AnnounceLevel()
     {
+        big_anim.SetTrigger("levelNameAppear");
         yield return new WaitForSeconds(timeToAppear);
         big_anim.SetTrigger("levelNameDisappear");
     }
