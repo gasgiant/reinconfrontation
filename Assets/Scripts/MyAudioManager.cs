@@ -6,10 +6,10 @@ public class MyAudioManager : MonoBehaviour
 {
     public AudioClip[] music_list;
 
-    public void playMusicOnLevel(int level)
+    public void PlayMusicOnLevel(int level)
     {
-        if (level < music_list.Length)
-            AudioManager.Instance.PlayMusic(music_list[level]);
+        if (level < music_list.Length*2)
+             AudioManager.Instance.PlayMusic(music_list[level/2]);
             
     }
 }
