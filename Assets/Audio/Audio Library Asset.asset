@@ -34,13 +34,65 @@ MonoBehaviour:
     fadeStartTime: 0
     fadeDuration: 0
   - groupID: EnemyKilled
-    volume: 0.5
+    volume: 1
     deadTime: 0.1
     sounds:
-    - {fileID: 8300000, guid: fdf2672fed628384f80a422ffb22b43b, type: 3}
-    - {fileID: 8300000, guid: c52a8693622f5e147aba20114c4e2273, type: 3}
-    - {fileID: 8300000, guid: 393dc3d2976c95b4a9af0e9c44bc8cee, type: 3}
-    - {fileID: 8300000, guid: bb09eebd089f9884790235d3b12d09de, type: 3}
+    - {fileID: 8300000, guid: a2de47e677b01804f8b2ff52a3c57f5d, type: 3}
+    - {fileID: 8300000, guid: 21259c207783eb8468f236cbf02027e4, type: 3}
+    - {fileID: 8300000, guid: 010683a2e587755439530f13aab36e67, type: 3}
+    - {fileID: 8300000, guid: 8070c840537dc364b9f2f5e1b8524fb0, type: 3}
+    - {fileID: 8300000, guid: 44377424914762b49a3286992844deec, type: 3}
+    randomize: 0
+    pitchRndValue: 0
+    volumeRndValue: 0
+    interruptible: 0
+    maxSoursesCount: 0
+    loop: 0
+    fadeOutTime: 0
+    loopMode: 0
+    maxLoopCount: 0
+    fadeStartTime: 0
+    fadeDuration: 0
+  - groupID: Click
+    volume: 1
+    deadTime: 0.1
+    sounds:
+    - {fileID: 8300000, guid: 34cfa8483a679fb4395502177bd9a65c, type: 3}
+    randomize: 0
+    pitchRndValue: 0
+    volumeRndValue: 0
+    interruptible: 0
+    maxSoursesCount: 0
+    loop: 0
+    fadeOutTime: 0
+    loopMode: 0
+    maxLoopCount: 0
+    fadeStartTime: 0
+    fadeDuration: 0
+  - groupID: Warp
+    volume: 1
+    deadTime: 0.1
+    sounds:
+    - {fileID: 8300000, guid: 7eb5ff2c14751e54cb94151489c52a93, type: 3}
+    randomize: 0
+    pitchRndValue: 0
+    volumeRndValue: 0
+    interruptible: 0
+    maxSoursesCount: 0
+    loop: 0
+    fadeOutTime: 0
+    loopMode: 0
+    maxLoopCount: 0
+    fadeStartTime: 0
+    fadeDuration: 0
+  - groupID: PlayerDeath
+    volume: 1
+    deadTime: 0.1
+    sounds:
+    - {fileID: 8300000, guid: 055fe91988e812f4b8b3c220b26708a3, type: 3}
+    - {fileID: 8300000, guid: 116de84a6e849424cb0dca6ada044618, type: 3}
+    - {fileID: 8300000, guid: 746acda5f98910d4b8a8bf848102e8d2, type: 3}
+    - {fileID: 8300000, guid: 7abe62da8733db743b7c32bfa02fc477, type: 3}
     randomize: 0
     pitchRndValue: 0
     volumeRndValue: 0

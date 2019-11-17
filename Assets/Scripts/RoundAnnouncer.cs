@@ -31,6 +31,7 @@ public class RoundAnnouncer : MonoBehaviour
         for (int i = 0; i <= myText.Length; i++)
         {
             bigText.text = myText.Substring(0, i);
+            AudioManager.Instance.PlaySound("Click");
             yield return new WaitForSeconds(typeSpeed);
         }
         yield return new WaitForSeconds(timeToAppear);

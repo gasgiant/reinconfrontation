@@ -19,7 +19,7 @@ public class CommandManager : MonoBehaviour
     private Coroutine executionRoutine;
     private bool recording;
 
-
+    public int EnemiesCount { get { return enemies.Count; } }
 
     private void Awake()
     {

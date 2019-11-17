@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public int RoundNumber;
 
     [SerializeField]
+    private GameObject tutorial;
+
+    [SerializeField]
     private AnimationCurve lensDistortionCurve;
 
     [SerializeField]
@@ -36,23 +39,32 @@ public class GameManager : MonoBehaviour
         my_audio_manager.GetComponent<MyAudioManager>().PlayMusicOnLevel(0);
     }
 
+    
+
     private void Start()
     {
+        EnableControl = false;
         LensDistortion lensDistortion = null;
         postProcessVolume.profile.TryGetSettings(out lensDistortion);
         lensDistortion.intensity.value = 0f;
-        Play();
     }
 
 
     private void Play()
     {
+        EnableControl = true;
         ResetEvent.Invoke();
         announcer.NewLevel(0);
     }
 
     private void Update()
     {
+        if (tutorial.activeInHierarchy && Input.GetKeyDown(KeyCode.Return))
+        {
+            tutorial.SetActive(false);
+            Play();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             holdStartTime = Time.time;
@@ -74,7 +86,7 @@ public class GameManager : MonoBehaviour
             //Invert *= -1;
             RoundNumber++;
             my_audio_manager.GetComponent<MyAudioManager>().PlayMusicOnLevel(RoundNumber);
-            
+            AudioManager.Instance.PlaySound("Warp");
             failsCounter = 0;
             restartTip.SetActive(false);
         }

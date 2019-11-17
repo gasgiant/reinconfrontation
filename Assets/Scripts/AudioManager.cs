@@ -139,7 +139,7 @@ public class AudioManager : MonoBehaviour {
         library.ImportSoundGroups();
 
         masterVolumePercent = 1;// PlayerPrefs.GetFloat("masterVolumePercent", 1f);
-        musicVolumePercent = PlayerPrefs.GetFloat("musicVolumePercent", 1f);
+        musicVolumePercent = 0.5f;//PlayerPrefs.GetFloat("musicVolumePercent", 1f);
         sfxVolumePercent = PlayerPrefs.GetFloat("sfxVolumePercent", 1f);
 
         GameObject newAudioSourceGO;

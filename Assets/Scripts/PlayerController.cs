@@ -59,10 +59,12 @@ public class PlayerController : MonoBehaviour
         {
             Die();
             CameraController.RandomShake(0.5f, 0.06f, 2, 0.2f, 1);
-            AudioManager.Instance.PlaySound("EnemyKilled");
+            if (CommandManager.Instance.EnemiesCount > 0)
+                AudioManager.Instance.PlaySound("EnemyKilled");
         }
         if (!isEnemy && collision.CompareTag("EnemyBullet"))
         {
+            AudioManager.Instance.PlaySound("PlayerDeath");
             CameraController.RandomShake(0.8f, 0.05f, 3, 5f, 0);
             GameManager.Instance.FinishRound(false);
             mainVisuals.SetActive(false);
