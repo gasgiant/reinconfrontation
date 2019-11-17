@@ -19,7 +19,7 @@ TagManager:
   - 
   - Player
   - Bullets
-  - 
+  - Walls
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1985498577
+    locked: 0
+  - name: Walls
+    uniqueID: 856699081
     locked: 0

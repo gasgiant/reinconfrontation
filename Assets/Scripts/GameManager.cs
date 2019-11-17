@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
     public static UnityEvent ResetEvent = new UnityEvent();
     public bool EnableControl;
     public GameObject my_audio_manager;
+    private bool pauseToggle = false;
+    public GameObject score_panel;
 
-    public int RoundNumber;
+    public int RoundNumber = 0;
+    public GameObject HSManager;
 
     [SerializeField]
     private GameObject tutorial;
@@ -29,8 +32,9 @@ public class GameManager : MonoBehaviour
     private GameObject restartTip;
 
     float holdStartTime;
+    float exitTime;
     int failsCounter;
-    
+
 
     private void Awake()
     {
@@ -75,6 +79,27 @@ public class GameManager : MonoBehaviour
             if (Time.time - holdStartTime > 2)
                 SceneManager.LoadScene(0);
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            score_panel.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            score_panel.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //will work in build???
+            Debug.Log("HI");
+            Application.Quit();
+        }
+
+        Highscores.AddNewHighscore(PlayerPrefs.GetString("username"), RoundNumber);
+        HSManager.GetComponent<DisplayHighscores>().currentScore.text = "current: " + RoundNumber;
     }
 
     public void FinishRound(bool win)
