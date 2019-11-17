@@ -60,6 +60,7 @@ public class Highscores : MonoBehaviour
         {
             print("Error Downloading: " + request.error);
         }
+        yield return new WaitForSecondsRealtime(2);
     }
 
     void FormatHighscores(string textStream)

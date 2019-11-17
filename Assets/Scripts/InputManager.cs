@@ -26,6 +26,6 @@ public class InputManager : MonoBehaviour
     {
         PlayerPrefs.SetString("username", username);
         Debug.Log(username);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }

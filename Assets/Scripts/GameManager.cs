@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private GameObject restartTip;
 
     float holdStartTime;
+    float holdStartTimeQ;
     float exitTime;
     int failsCounter;
 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             if (Time.time - holdStartTime > 2)
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
         }
 
         if (Input.GetKey(KeyCode.Escape))
@@ -93,9 +94,13 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            //will work in build???
-            Debug.Log("HI");
-            Application.Quit();
+            holdStartTimeQ = Time.time;
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (Time.time - holdStartTimeQ > 2)
+                SceneManager.LoadScene(0);
         }
 
         Highscores.AddNewHighscore(PlayerPrefs.GetString("username"), RoundNumber);

@@ -11,8 +11,12 @@ public class MyAudioManager : MonoBehaviour
     {
         if (level < music_list.Length*2 && counter == 0)
         {
-            AudioManager.Instance.PlayMusic(music_list[level/2]);
+            int index = Index(level);
+            if (index > music_list.Length - 1)
+                index = music_list.Length - 1;
+            AudioManager.Instance.PlayMusic(music_list[index]);
         }
+        /*
         if (level < music_list.Length * 2 && counter < 2)
         {
             counter++;
@@ -21,9 +25,14 @@ public class MyAudioManager : MonoBehaviour
         {
             counter = 0;
         }
+        */
+    }
 
-
-
-
+    private int Index(int level)
+    {
+        if (level < 4)
+            return level / 2;
+        else
+            return level - 2;
     }
 }
