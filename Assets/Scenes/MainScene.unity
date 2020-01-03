@@ -383,6 +383,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!120 &103888850 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 6073449118999564386, guid: bb87e6662f4993f4494e0a40d0415cb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 887071068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &188235949
 GameObject:
   m_ObjectHideFlags: 0
@@ -7120,6 +7126,11 @@ PrefabInstance:
       propertyPath: wallLayer.m_Bits
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6073449120018736884, guid: bb87e6662f4993f4494e0a40d0415cb0,
+        type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 103888850}
     - target: {fileID: 6073449118999564386, guid: bb87e6662f4993f4494e0a40d0415cb0,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier

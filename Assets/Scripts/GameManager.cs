@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(1);
         }
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.H))
         {
             score_panel.SetActive(true);
             Time.timeScale = 0;
